@@ -149,9 +149,8 @@ let geometryLists = []
 
 let color1 = 0xf8f8f8
 let white = new THREE.MeshBasicMaterial(color1)
-colors[color1] = 
-    new THREE.MeshBasicMaterial({map: textureLoader.load('./resources/PicExample.jpg')})
-geometryLists[color1] = []
+
+// geometryLists[color1] = []
 
 class Teacher {
     constructor(scene, world, position, shirtColor, pantsColor, skinColor, hairColor, hairPositions) {
@@ -172,6 +171,17 @@ class Teacher {
     }
 }
 
+function makePaintingMaterial(picture) {
+    return [
+        white,  
+        white,
+        white,
+        white,
+        new THREE.MeshBasicMaterial({map: textureLoader.load(picture)}),
+        white,    
+    ]
+}
+
 function makeSchool(scene, world) {
     // let teacher = new Teacher(scene, world, new THREE.Vector3(1,1,1), 0x000000, 0x333333, 0xffe4e1)
     
@@ -179,32 +189,48 @@ function makeSchool(scene, world) {
 
     ]
     let museum = 
-    [[0xa3a2a5, 8.75, 2, 2.25, 15.25, 3.5, 0.25, true, true],
-[0xa3a2a5, 0.125, 3.375, 2.25, 2, 0.75, 0.25, true, true],
-[0xa3a2a5, -8.5, 2, 2.25, 15.25, 3.5, 0.25, true, true],
-[0xa3a2a5, 0.125, 0.125, -18.625, 32.5, 0.25, 42, true, true],
-[0xa3a2a5, 16.25, 2, -18.625, 0.25, 3.5, 41.5, true, true],
-[0xa3a2a5, 0.125, 2, -39.5, 32.5, 3.5, 0.25, true, true],
-[0xa3a2a5, -16, 2, -18.625, 0.25, 3.5, 41.5, true, true],
-[0xa3a2a5, 0.125, 3.875, -18.625, 32.5, 0.25, 42, true, true],
-[0xa3a2a5, 6.125, 2, -6.875, 6, 3.5, 6, true, true],
-[0xa3a2a5, -5.875, 2, -6.875, 6, 3.5, 6, true, true],
-[0xa3a2a5, 0.125, 2, -18.875, 18, 3.5, 6, true, true],
-[0xa3a2a5, -5.875, 2, -30.875, 6, 3.5, 6, true, true],
-[0xa3a2a5, 6.125, 2, -30.875, 6, 3.5, 6, true, true],
-[0xf8f8f8, -5.875, 2, -3.8499999046325684, 3.5, 2, 0.04999999701976776, true, true],
-[0xf8f8f8, -5.875, 2, -9.90000057220459, 3.5, 2, 0.04999999701976776, true, true],
-[0xf8f8f8, -2.8499984741210938, 2, -6.875, 0.04999999701976776, 2, 3.5, true, true],
-[0xf8f8f8, -8.899999618530273, 2, -6.875, 0.04999999701976776, 2, 3.5, true, true],
-[0xf8f8f8, 9.150001525878906, 2, -6.875, 0.04999999701976776, 2, 3.5, true, true],
-[0xf8f8f8, 3.1000003814697266, 2, -6.875, 0.04999999701976776, 2, 3.5, true, true],
-[0xf8f8f8, 6.125, 2, -3.8499999046325684, 3.5, 2, 0.04999999701976776, true, true],
-[0xf8f8f8, 6.125, 2, -9.90000057220459, 3.5, 2, 0.04999999701976776, true, true],
-[0x00ffff, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, true, true],
-]
-    
-    fillStaticBlockList(scene, world, museum, true)
+        [[0xa3a2a5, 8.75, 2, 2.25, 15.25, 3.5, 0.25, 0, 0, 0, true, true],
+        [0xa3a2a5, 0.125, 3.375, 2.25, 2, 0.75, 0.25, 0, 0, 0, true, true],
+        [0xa3a2a5, -8.5, 2, 2.25, 15.25, 3.5, 0.25, 0, 0, 0, true, true],
+        [0xa3a2a5, 0.125, 0.125, -18.625, 32.5, 0.25, 42, 0, 0, 0, true, true],
+        [0xa3a2a5, 16.25, 2, -18.625, 0.25, 3.5, 41.5, 0, 0, 0, true, true],
+        [0xa3a2a5, 0.125, 2, -39.5, 32.5, 3.5, 0.25, 0, 0, 0, true, true],
+        [0xa3a2a5, -16, 2, -18.625, 0.25, 3.5, 41.5, 0, 0, 0, true, true],
+        [0xa3a2a5, 0.125, 3.875, -18.625, 32.5, 0.25, 42, 0, 0, 0, true, true],
+        [0xa3a2a5, 6.125, 2, -6.875, 6, 3.5, 6, 0, 0, 0, true, true],
+        [0xa3a2a5, -5.875, 2, -6.875, 6, 3.5, 6, 0, 0, 0, true, true],
+        [0xa3a2a5, 0.125, 2, -18.875, 18, 3.5, 6, 0, 0, 0, true, true],
+        [0xa3a2a5, -5.875, 2, -30.875, 6, 3.5, 6, 0, 0, 0, true, true],
+        [0xa3a2a5, 6.125, 2, -30.875, 6, 3.5, 6, 0, 0, 0, true, true],
+        [0x00ffff, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
+        ]
+    let paintingObjects = [
+        [0xf8f8f8, -8.899999618530273, 2, -6.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+        [0xf8f8f8, -5.875, 2, -9.90000057220459, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+        [0xf8f8f8, -5.875, 2, -3.8499999046325684, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+        [0xf8f8f8, -2.849998712539673, 2, -6.875, 3.5, 2, 0.050000011920928955, 0, -90, 0, true, true],
+        [0xf8f8f8, 3.1000003814697266, 2, -6.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+        [0xf8f8f8, 6.125, 2, -3.8499999046325684, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+        [0xf8f8f8, 9.150001525878906, 2, -6.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+        [0xf8f8f8, 6.125, 2, -9.90000057220459, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    ]    
 
+    let paintings = [
+        makePaintingMaterial('./resources/PicExample.jpg'),
+        makePaintingMaterial('./resources/cubism.png'),
+        makePaintingMaterial('./resources/impressionism.png'),
+        makePaintingMaterial('./resources/2 soldaten schilderij.jpg'),
+        makePaintingMaterial('./resources/schepping van Adam.jpg')
+
+    ]
+
+    for (let i = 0; i < paintings.length; i++) {
+        const painting = paintings[i]
+        paintingObjects[i][0] = painting
+    }
+
+    fillStaticBlockList(scene, world, museum, true)
+    fillStaticBlockList(scene, world, paintingObjects, false)
     mergeListedGeometries(scene, geometryLists)
     
 }
@@ -213,7 +239,7 @@ function fillStaticBlockList(parent, world, blocks, merge) {
     let blockList = []
     for (let i = 0; i < blocks.length; i++) {
         const box = blocks[i];
-        blockList.push(makeStaticBlock(parent, world, new THREE.Vector3(box[1],box[2],box[3]), new THREE.Vector3(box[4],box[5],box[6]), box[0], box[7], box[8], merge))
+        blockList.push(makeStaticBlock(parent, world, new THREE.Vector3(box[1],box[2],box[3]), new THREE.Vector3(box[4],box[5],box[6]), new THREE.Vector3(box[7], box[8], box[9]), box[0], box[10], box[11], merge))
     }
     return blockList
 }
@@ -230,45 +256,64 @@ function mergeGeometries(parent, material, geometries) {
     parent.add(mergedMesh)
 }
 
-function makeThreeOnlyBlock(scene, position, size, color, merge) {
+function makeThreeOnlyBlock(scene, position, size, orientation, color, merge) {
     const boxGeometry = new THREE.BoxGeometry(size.x, size.y, size.z)
-    boxGeometry.translate(position.x, position.y, position.z)
-    if (!colors[color]) {
-        colors[color] = new THREE.MeshPhongMaterial({color: color})
-        geometryLists[color] = []
-    }
-    if (merge) {
-        geometryLists[color].push(boxGeometry)
-        return
-    }
-    let material = colors[color].material
-
-    const boxObject = new THREE.Mesh(boxGeometry, material)
     
+    boxGeometry.rotateX(orientation.x)
+    boxGeometry.rotateY(orientation.y)
+    boxGeometry.rotateZ(orientation.z)
+    boxGeometry.translate(position.x, position.y, position.z)
+    let material = color
+    
+    if (typeof(color) === "number") {
+        if (!colors[color]) {
+            colors[color] = new THREE.MeshPhongMaterial({color: color})
+            if (merge) {
+                geometryLists[color] = []
+            }
+        }
+        if (merge) {
+            geometryLists[color].push(boxGeometry)
+            return
+        }
+        
+        material = colors[color].material
+    }
+    
+    const boxObject = new THREE.Mesh(boxGeometry, material)
     scene.add(boxObject)
     return boxObject
 }
 
-function makeCannonOnlyBlock(world, position, size) {
+function makeCannonOnlyBlock(world, position, size, orientation) {
     const boxBody = new CANNON.Body({
         type: CANNON.Body.STATIC,
         shape: new CANNON.Box(new CANNON.Vec3(size.x/2, size.y/2, size.z/2)),
-        position: new CANNON.Vec3(position.x, position.y, position.z)
+        position: new CANNON.Vec3(position.x, position.y, position.z),
     })
+    let orientationQat = new CANNON.Quaternion()
+    orientationQat.setFromEuler(orientation.x, orientation.y, orientation.z)
+    boxBody.quaternion.copy(orientationQat)
     world.addBody(boxBody)
     return boxBody
 }
 
-function makeStaticBlock(parent, world, position, size, color, canCollide, canSee, merge) {
+function makeStaticBlock(parent, world, position, size, orientation, color, canCollide, canSee, merge) {
+    let orientationRad = new THREE.Vector3(
+        THREE.MathUtils.degToRad(orientation.x),
+        THREE.MathUtils.degToRad(orientation.y),
+        THREE.MathUtils.degToRad(orientation.z)
+    );
+    //orientationRad = new THREE.Vector3(0, 0, 0)
     let boxObject, boxBody
     if (canSee) {
-        boxObject = makeThreeOnlyBlock(parent, position, size, color, merge)
+        boxObject = makeThreeOnlyBlock(parent, position, size, orientationRad, color, merge)
     }
     if (canCollide) {
         if (!parent.isScene) {
             position.addVectors(parent.position, position)
         }  
-        boxBody = makeCannonOnlyBlock(world, position, size)
+        boxBody = makeCannonOnlyBlock(world, position, size, orientationRad)
     }
     return [boxObject, boxBody]
 }
