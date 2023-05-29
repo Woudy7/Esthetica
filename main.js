@@ -295,10 +295,10 @@ function makeSchool(scene, world) {
         const lamp = lights[i]
         lamp[0] = lampMaterial
         const lampObj = makeStaticBlock(scene, world, lamp, false)[0]
-        const light = new THREE.SpotLight(lampColor, 0.2)
+        const light = new THREE.SpotLight(lampColor, 0.3)
         light.penumbra = 1
-      
-        light.position.set(lamp[1], lamp[2]-lamp[5], lamp[3])
+        light.angle = Math.PI/2
+        light.position.set(lamp[1], lamp[2], lamp[3])
         light.target.position.set(lamp[1], lamp[2]-lamp[5]-10, lamp[3])
         scene.add(light)
         scene.add(light.target)
