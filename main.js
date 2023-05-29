@@ -42,13 +42,13 @@ const Controls = new PointerLockControls(camera, sphereBody, canvas)
 scene.background = new THREE.Color(0xA0E2FF)
 {
     const color = 0xFFFFFF;
-    const intensity = 1;
+    const intensity = 0.1;
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(-1, 2, 4);
     scene.add(light);
 }
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.2)
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.7)
 scene.add(ambientLight)
 
 const boxWidth = 1;
@@ -229,27 +229,26 @@ function makeSchool(scene, world) {
 
     ]
     let museum = 
-[[0xa3a2a5, -2.25, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0x00ffff, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
-[0xa3a2a5, 0.125, 3.375, 2.25, 2, 0.75, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, 0.12499809265136719, 3.875, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
-[0xa3a2a5, 2.5, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, 0.125, 0.125, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
-[0xa3a2a5, 4, 2, -5.25, 0.25, 3.5, 15.25, 0, 0, 0, true, true],
-[0xa3a2a5, 11.625, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, 19, 2, -16.75, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
-[0xa3a2a5, 11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, 4, 2, -28.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
-[0xa3a2a5, 0, 2, -35.5, 7.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, -3.750000476837158, 2, -27.875, 0.25, 3.5, 15, 0, 0, 0, true, true],
-[0xa3a2a5, -11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, -18.75, 2, -16.5, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
-[0xa3a2a5, -11.125, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xa3a2a5, -3.75, 2, -5.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
+
+[[0xf8f8f8, -2.25, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
+[0xaaffff, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
+[0xf8f8f8, 0.125, 3.375, 2.25, 2, 0.75, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, 0.12499809265136719, 3.875, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
+[0xf8f8f8, 2.5, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
+[0xffc0ab, 0.125, 0.125, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
+[0xf8f8f8, 4, 2, -5.25, 0.25, 3.5, 15.25, 0, 0, 0, true, true],
+[0xf8f8f8, 11.625, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, 19, 2, -16.75, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
+[0xf8f8f8, 11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, 4, 2, -28.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
+[0xf8f8f8, 0, 2, -35.5, 7.75, 3.5, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, -3.750000476837158, 2, -27.875, 0.25, 3.5, 15, 0, 0, 0, true, true],
+[0xf8f8f8, -11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, -18.75, 2, -16.5, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
+[0xf8f8f8, -11.125, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
+[0xf8f8f8, -3.75, 2, -5.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
 ]
-    let paintingObjects = 
-    
-    
+    let paintingObjects =    
 [[0xf8f8f8, 0.125, 2, -35.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
 [0xf8f8f8, 3.8500003814697266, 2, -2.375, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
 [0xf8f8f8, -3.599998950958252, 2, -8.375, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
@@ -275,7 +274,12 @@ function makeSchool(scene, world) {
 [0xf8f8f8, -14.125, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
 ]
 
-    
+    let lights = [[0xf8f8f8, 0.12499809265136719, 3.625, -16.625, 3, 0.25, 3, 0, 0, 0, false, true],
+    [0xf8f8f8, 0.12499809265136719, 3.625, -27.875, 1.5, 0.25, 3, 0, 0, 0, false, true],
+    [0xf8f8f8, 0.12499809265136719, 3.625, -5.375, 1.5, 0.25, 3, 0, 0, 0, false, true],
+    [0xf8f8f8, -11.125001907348633, 3.625, -16.625, 3, 0.25, 1.5, 0, 0, 0, false, true],
+    [0xf8f8f8, 11.374998092651367, 3.625, -16.625, 3, 0.25, 1.5, 0, 0, 0, false, true],
+    ]
 
     for (let i = 0; i < paintings.length; i++) {
         const painting = paintings[i]
@@ -284,7 +288,24 @@ function makeSchool(scene, world) {
         paintingObj[4] = paintingObj[5] * painting[1] //Setting aspect ratio, width = height * width/height
         painting[4] = makeStaticBlock(scene, world, paintingObj, false)[0]
     }
+    let lampColor = 0xFFFFFF
+    let lampMaterial = new THREE.MeshBasicMaterial(lampColor)
 
+    for (let i = 0; i < lights.length; i++) {
+        const lamp = lights[i]
+        lamp[0] = lampMaterial
+        const lampObj = makeStaticBlock(scene, world, lamp, false)[0]
+        const light = new THREE.SpotLight(lampColor, 0.2)
+        light.penumbra = 1
+      
+        light.position.set(lamp[1], lamp[2]-lamp[5], lamp[3])
+        light.target.position.set(lamp[1], lamp[2]-lamp[5]-10, lamp[3])
+        scene.add(light)
+        scene.add(light.target)
+        //console.log(lamp)
+        
+    }
+    //fillStaticBlockList(scene, world, lights, true)
     fillStaticBlockList(scene, world, museum, true)
 
     mergeListedGeometries(scene, geometryLists)
