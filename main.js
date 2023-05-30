@@ -217,18 +217,26 @@ function makePaintingMaterial(picture) {
 }
 
 let paintings = [
-    [makePaintingMaterial('./resources/cubism.png'), 1, "Schilderij van DALL-E 2", 
-        "Dit is een kunstwerk dat werd gemaakt door een AI, genaamd Dall e2. Dit kunstwerk is een kubistisch werk gemaakt door een AI. Ook is de gulden snede hier zeer aanwezig in dit portret.  Hiermee wordt er harmonie gecreëerd. Ook wordt het menselijke, de mens, hier afgebeeld als een opeenstapeling van kubistische figuren."],
+    [makePaintingMaterial('./resources/Leyers.jpg'), 732/1261,
+    "Leyers", 'Een kunstwerk dat we nodig hebben maar niet hebben verdiend. Het is bewezen dat Leyers een mathematisch perfect persoon is in elk aspect. Meetkundig heeft hij de perfecte figuur en mentaal heeft hij een brein dat veel verder ontwikkeld is dan dat van de gemiddelde WEWI-leerling. Elke foto van hem wordt automatisch als kunst beschouwd.'],
     [makePaintingMaterial('./resources/impressionism.png'), 1, "Schilderij van DALL-E 2", 
         "Een kunstwerk gegenereerd door een AI-model. Het impressionisme is duidelijk aanwezig in dit werk. Hiermee doet het de kijker ervan inleven in het moment. De nadruk ligt hier duidelijk op de kleur en het licht dat hiermee gemoeid is. Je ziet wel dat het bloemen zijn, maar ook niet meer dan dat."],
     [makePaintingMaterial('./resources/2 soldaten schilderij.jpg'), 500/389, "De eed van de Horatii door Jacques-Louis David (1784)", 
         "De schilderkunst is neoclassicisme en zit boordevol gulden sneden. Zo zijn de 2 horatii's (soldaten) links op zo'n manier opgesteld dat ze de gulden snede vormen met de rest van het schilderij. Ook hun benen t.o.v. hun romp, hun hand t.o.v. hun arm..."],
     [makePaintingMaterial('./resources/schepping van Adam.jpg'), 260/121,"Schepping van Adam door Michelangelo", 
         "Deze fresco is een illustratie van het scheppingsverhaal 'Genesis'. We zien God Adam creëren. De lengte van Adam en de lengte van God op de fresco voldoen aan de gulden ratio. Dit betekent dat de arm van Adam (links) dezelfde verhouding heeft t.o.v. van Gods arm als de arm van God t.o.v. het geheel. "],
-    [makePaintingMaterial('./resources/VitruvianMan.jpg'), 452/614,
-        "The Vitruvian Man (De Vitruviaanse Man) door Leonardo da Vinci", 
-        "Deze beroemde tekening toont een naakte man in twee overlappende posities, met zijn ledematen en romp geplaatst binnen een cirkel en een vierkant. Het werk illustreert de principes van de gulden snede en de verhoudingen van het menselijk lichaam, wat belangrijke wiskundige concepten zijn."],
-    [makePaintingMaterial('./resources/ThePersistenceOfMemory.jpg'), 750/570,
+        [makePaintingMaterial('./resources/GalaxyCat.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A galaxy cat sleeping by a fire, digital art".<br><br>Bij het gebruiken van generative AI zijn er bepaalde technieken die mensen gebruiken om betere resultaten te krijgen, zoals hier de toevoeging van "digital art" achter de prompt om een mooi resultaat te krijgen. Het toepassen van dit soort technieken wordt vaak "prompting" genoemd. Er zijn verschillende online communities waarbij men tips deelt om goed te kunnen "prompten".'],
+        [makePaintingMaterial('./resources/Fox.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A fox on a hill staring over forests in the night. The sky if full of stars, digital art".<br><br>Zelfs met spellingsfouten kan de AI nog een afbeelding maken van de prompt.'],
+    [makePaintingMaterial('./resources/WorldExplode.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "The world exploding as the gods watch, digital art". Het lijkt alsof het een episch verhaal toont over een strijd waar wij niet van weten.'],
+    [makePaintingMaterial('./resources/Gondalpo.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A gondalpho standing next to a contama, painting". <br><br>Bij niet bestaande woorden maakt de AI nog altijd een afbeelding, de AI kan namelijk voor alle mogelijke teksten en beschrijvingen een afbeelding maken. Het interpreteerd dan gewoon hoe dat het er moet uitzien. In dit geval werd "Gondalpo" waarschijnlijk geïnterpreteerd als een gondel.'],
+               [makePaintingMaterial('./resources/cubism.png'), 1, "Schilderij van DALL-E 2", 
+        "Dit is een kunstwerk dat werd gemaakt door een AI, genaamd Dall e2. Dit kunstwerk is een kubistisch werk gemaakt door een AI. Ook is de gulden snede hier zeer aanwezig in dit portret.  Hiermee wordt er harmonie gecreëerd. Ook wordt het menselijke, de mens, hier afgebeeld als een opeenstapeling van kubistische figuren."],
+
+        [makePaintingMaterial('./resources/ThePersistenceOfMemory.jpg'), 750/570,
         "The Persistence of Memory  (De Volharding der Herinnering) door Salvador Dalí", "Dit surrealistische schilderij toont vervormde horloges die lijken te smelten en hangen over objecten. Hoewel het schilderij niet strikt geometrisch is, bevat het elementen van meetkunde, zoals de gestructureerde compositie en de nauwkeurige weergave van objecten."],
     [makePaintingMaterial('./resources/Kanagawa.jpg'), 500/348,
         "The Great Wave off Kanagawa (De Grote Golf van Kanagawa) door Katsushika Hokusai", "Dit iconische Japanse houtblokafdruk toont een gigantische golf die de kust overspoelt, met op de achtergrond de berg Fuji. Hoewel het schilderij niet direct wiskundige vormen bevat, maakt het gebruik van de principes van lineaire perspectief en diagonale lijnen om diepte en beweging te creëren. Deze wiskundige concepten spelen een belangrijke rol in de compositie en visuele impact van het werk."],
@@ -236,28 +244,22 @@ let paintings = [
         "Fractal", "Dit is een voorbeeld van een fractal, een meetkundige figuur die zelfgelijkend is met een oneindige hoeveelheid details."],
     [makePaintingMaterial('./resources/MandelBrot.jpg'), 512/384,
         "Mandelbrotfractal", "Dit is een van de meest bekende fractalen, het is zelfgelijkend wat betekent dat het is opgebouwd uit delen die grotendeels gelijkvormig zijn met de figuur zelf. Als je de mathematische versie van deze figuur hebt dan kan je er oneindig lang op inzoomen met een verscheidenheid aan patronen dat verschijnt, vaak patronen die zich herhalen op verschillende niveaus van grootte."],
-    [makePaintingMaterial('./resources/Fox.jpg'), 1/1,
-        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A fox on a hill staring over forests in the night. The sky if full of stars, digital art".<br><br>Zelfs met spellingsfouten kan de AI nog een afbeelding maken van de prompt.'],
-    [makePaintingMaterial('./resources/WorldExplode.jpg'), 1/1,
-        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "The world exploding as the gods watch, digital art". Het lijkt alsof het een episch verhaal toont over een strijd waar wij niet van weten.'],
-    [makePaintingMaterial('./resources/GalaxyCat.jpg'), 1/1,
-        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A galaxy cat sleeping by a fire, digital art".<br><br>Bij het gebruiken van generative AI zijn er bepaalde technieken die mensen gebruiken om betere resultaten te krijgen, zoals hier de toevoeging van "digital art" achter de prompt om een mooi resultaat te krijgen. Het toepassen van dit soort technieken wordt vaak "prompting" genoemd. Er zijn verschillende online communities waarbij men tips deelt om goed te kunnen "prompten".'],
-    [makePaintingMaterial('./resources/Gondalpo.jpg'), 1/1,
-        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A gondalpho standing next to a contama, painting". <br><br>Bij niet bestaande woorden maakt de AI nog altijd een afbeelding, de AI kan namelijk voor alle mogelijke teksten en beschrijvingen een afbeelding maken. Het interpreteerd dan gewoon hoe dat het er moet uitzien.'],
-    [makePaintingMaterial('./resources/Yannita.jpg'), 1/1,
-        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A painting of a landscape in the style of Josh Yannita". <br><br>Ook bij niet bestaande artiesten of stijlen moet de AI een interpretatie proberen maken van de beschrijving. Hierbij kunnen er verscheidende resultaten zijn zoals dit schilderij.'],
-    [makePaintingMaterial('./resources/SchoolAthene.jpg'), 266/206,
+                [makePaintingMaterial('./resources/SiteFoto.png'), 500/246,
+        "Deze site zelf", 'Een voorbeeld van hoe dat wiskunde en kunst samen kunnen komen is deze site. Een digitaal museum. Het kunstaspect is duidelijk zichtbaar aan de schilderijen die hier hangen  en de wiskunde ligt overal onder de werking van de site. Om dit beeld dat je nu ziet te creëren is er een gigantische hoeveelheid wiskunde nodig. Ook om toe te laten dat je kan bewegen en rondkijken is er wiskunde nodig. Dit is gemengd met de nood om "mooi" te programmeren. Er zijn mensen die zelfs denken dat programmeren een soort kunst op zich is. Daardoor zou deze site zelf ook geïnterpreteerd kunnen worden als een kunstwerk.'],
+    
+           [makePaintingMaterial('./resources/SchoolAthene.jpg'), 266/206,
         '"De School van Athene" (Scuola di Atene) door Rafaël', 'Dit beroemde fresco uit 1510 is te vinden in de Apostolische Paleizen van het Vaticaan. Het schilderij beeldt een groep klassieke filosofen uit, waaronder Plato en Aristoteles. Rafaël heeft verschillende wiskundige concepten in het schilderij verwerkt, zoals meetkunde en perspectief. De centrale figuur, Plato, houdt bijvoorbeeld een boek vast waarop een diagram van een regelmatig dodecaëder (een veelvlak met twaalf regelmatige vijfhoekige vlakken) te zien is.'],
     [makePaintingMaterial('./resources/PenroseTrappen.jpg'), 270/345,
     '"De Penrose-trappen" (Waterfall) door M.C. Escher', 'Dit beroemde lithografische werk uit 1961 toont een ogenschijnlijk onmogelijke constructie van een trap die oneindig lijkt te stijgen. Escher was gefascineerd door wiskundige concepten en maakte gebruik van principes zoals optische illusie en meetkunde om zijn kunstwerken te creëren. De Penrose-trappen zijn een voorbeeld van een paradoxale structuur die gebaseerd is op het werk van de Britse wiskundige Sir Roger Penrose.'],
     [makePaintingMaterial('./resources/Melancholie.jpg'), 266/388,
     '"De Melancholie I" door Albrecht Dürer', 'Deze gravure uit 1514 is een complex allegorisch werk waarin verschillende elementen samenkomen, waaronder wiskundige symbolen en meetinstrumenten. Het schilderij toont een engelachtige figuur omringd door wiskundige objecten, zoals een passer, een dobbelsteen en een meetlat. Het werk heeft verschillende interpretaties, maar wordt vaak geassocieerd met het concept van creatieve en intellectuele melancholie.'],
-    [makePaintingMaterial('./resources/SiteFoto.png'), 500/246,
-    "Deze site zelf", 'Een voorbeeld van hoe dat wiskunde en kunst samen kunnen komen is deze site. Een digitaal museum. Het kunstaspect is duidelijk zichtbaar aan de schilderijen die hier hangen  en de wiskunde licht overal onder de werking van de site. Om dit beeld dat je nu ziet te creëren is er een gigantische hoeveelheid wiskunde nodig. Ook om toe te laten dat je kan bewegen en rondkijken is er wiskunde nodig. Dit is gemengd met de nood om "mooi" te programmeren. Er zijn mensen die zelfs denken dat programmeren een soort kunst op zich is. Daardoor zou deze site zelf ook geïnterpreteerd kunnen worden als een kunstwerk.'],
-    [makePaintingMaterial('./resources/Leyers.jpg'), 732/1261,
-    "Leyers", 'Een kunstwerk dat we nodig hebben maar niet hebben verdiend. Het is bewezen dat Leyers een mathematisch perfect persoon is in elk aspect. Meetkundig heeft hij de perfecte figuur en mentaal heeft hij een brein dat veel verder ontwikkeld is dan dat van de gemiddelde WEWI-leerling. Elke foto van hem wordt automatisch als kunst beschouwd.'],
+    [makePaintingMaterial('./resources/VitruvianMan.jpg'), 452/614,
+        "The Vitruvian Man (De Vitruviaanse Man) door Leonardo da Vinci", 
+        "Deze beroemde tekening toont een naakte man in twee overlappende posities, met zijn ledematen en romp geplaatst binnen een cirkel en een vierkant. Het werk illustreert de principes van de gulden snede en de verhoudingen van het menselijk lichaam, wat belangrijke wiskundige concepten zijn."],
+        [makePaintingMaterial('./resources/Yannita.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A painting of a landscape in the style of Josh Yannita". <br><br>Ook bij niet bestaande artiesten of stijlen moet de AI een interpretatie proberen maken van de beschrijving. Hierbij kunnen er verscheidende resultaten zijn zoals dit schilderij.'],
 
-    //[0xffffff, 1/1, "Engelenbeeld door Vicente Betoret Ferrero", "Een low poly 3D model dat een engel voorstelt. Dit soort modellen wordt met software zoals blender gemaakt."]
+      //[0xffffff, 1/1, "Engelenbeeld door Vicente Betoret Ferrero", "Een low poly 3D model dat een engel voorstelt. Dit soort modellen wordt met software zoals blender gemaakt."]
 ]   
 
 function makeSchool(scene, world) {
@@ -354,9 +356,11 @@ function makeSchool(scene, world) {
     mergeListedGeometries(scene, geometryLists)
 
     
-    //let newThing  = makeStaticBlock(scene, world, [0xf8f8f8, -0.3, 2, -16.25, 0.1, 0.1, 0.1, 0, 0, 0, false, true],  false)[0]
-    //console.log(newThing)
-    //paintings.push(0x111111, 1, "Engelenbeeld door Vicente Betoret Ferrero", "Dit is een low poly 3D model van een engelenbeeld. Dit soort modellen wordt vaak door software zoals Blender gemaakt.", newThing)
+    let newThing  = makeStaticBlock(scene, world, [0xf8f8f8, 0, 2, -16.25, 0.1, 0.1, 0.1, 0, 0, 0, false, true],  false)[0]
+    
+    console.log(newThing)
+    paintings.push([0x111111, 1, "Engelenbeeld door Vicente Betoret Ferrero", 'Dit is een low poly 3D model van een engelenbeeld. Dit soort digitale 3D modellen wordt vaak met behulp software zoals Blender gemaakt. Het maken van dit soort models, of "modelleren" is een belangrijk aspect bij het maken van games, 3D animatiefilms en CGI.', newThing])
+    console.log(paintings)
     const loader = new GLTFLoader()
     //let modelTexture = textureLoader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf')
     loader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf', function ( gltf ) {
