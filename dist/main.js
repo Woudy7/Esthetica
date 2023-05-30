@@ -330,7 +330,7 @@ function makeSchool(scene, world) {
         //paintingObj[6] = 3
         paintingObj[4] = paintingObj[5] * painting[1] //Setting aspect ratio, width = height * width/height
         painting[4] = makeStaticBlock(scene, world, paintingObj, false)[0]
-        console.log(painting[4])
+        // console.log(painting[4])
     }
     let lampColor = 0xFFFFFF
     let lampMaterial = new THREE.MeshBasicMaterial(lampColor)
@@ -358,9 +358,9 @@ function makeSchool(scene, world) {
     
     let newThing  = makeStaticBlock(scene, world, [0xf8f8f8, 0, 2, -16.25, 0.1, 0.1, 0.1, 0, 0, 0, false, true],  false)[0]
     
-    console.log(newThing)
+    // console.log(newThing)
     paintings.push([0x111111, 1, "Engelenbeeld door Vicente Betoret Ferrero", 'Dit is een low poly 3D model van een engelenbeeld. Dit soort digitale 3D modellen wordt vaak met behulp software zoals Blender gemaakt. Het maken van dit soort models, of "modelleren" is een belangrijk aspect bij het maken van games, 3D animatiefilms en CGI.', newThing])
-    console.log(paintings)
+    // console.log(paintings)
     const loader = new GLTFLoader()
     //let modelTexture = textureLoader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf')
     loader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf', function ( gltf ) {
