@@ -246,18 +246,18 @@ let paintings = [
         "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A gondalpho standing next to a contama, painting". <br><br>Bij niet bestaande woorden maakt de AI nog altijd een afbeelding, de AI kan namelijk voor alle mogelijke teksten en beschrijvingen een afbeelding maken. Het interpreteerd dan gewoon hoe dat het er moet uitzien.'],
     [makePaintingMaterial('./resources/Yannita.jpg'), 1/1,
         "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A painting of a landscape in the style of Josh Yannita". <br><br>Ook bij niet bestaande artiesten of stijlen moet de AI een interpretatie proberen maken van de beschrijving. Hierbij kunnen er verscheidende resultaten zijn zoals dit schilderij.'],
-    [makePaintingMaterial('./resources/'), 1/1,
-        "Nog niets", 'Zwart spul'],
-    [makePaintingMaterial('./resources/'), 1/1,
-    "Nog niets", 'Zwart spul'],
-    [makePaintingMaterial('./resources/'), 1/1,
-    "Nog niets", 'Zwart spul'],
-    [makePaintingMaterial('./resources/'), 1/1,
-    "Nog niets", 'Zwart spul'],
-    [makePaintingMaterial('./resources/'), 1/1,
-    "Nog niets", 'Zwart spul'],
+    [makePaintingMaterial('./resources/SchoolAthene.jpg'), 266/206,
+        '"De School van Athene" (Scuola di Atene) door Rafaël', 'Dit beroemde fresco uit 1510 is te vinden in de Apostolische Paleizen van het Vaticaan. Het schilderij beeldt een groep klassieke filosofen uit, waaronder Plato en Aristoteles. Rafaël heeft verschillende wiskundige concepten in het schilderij verwerkt, zoals meetkunde en perspectief. De centrale figuur, Plato, houdt bijvoorbeeld een boek vast waarop een diagram van een regelmatig dodecaëder (een veelvlak met twaalf regelmatige vijfhoekige vlakken) te zien is.'],
+    [makePaintingMaterial('./resources/PenroseTrappen.jpg'), 270/345,
+    '"De Penrose-trappen" (Waterfall) door M.C. Escher', 'Dit beroemde lithografische werk uit 1961 toont een ogenschijnlijk onmogelijke constructie van een trap die oneindig lijkt te stijgen. Escher was gefascineerd door wiskundige concepten en maakte gebruik van principes zoals optische illusie en meetkunde om zijn kunstwerken te creëren. De Penrose-trappen zijn een voorbeeld van een paradoxale structuur die gebaseerd is op het werk van de Britse wiskundige Sir Roger Penrose.'],
+    [makePaintingMaterial('./resources/Melancholie.jpg'), 266/388,
+    '"De Melancholie I" door Albrecht Dürer', 'Deze gravure uit 1514 is een complex allegorisch werk waarin verschillende elementen samenkomen, waaronder wiskundige symbolen en meetinstrumenten. Het schilderij toont een engelachtige figuur omringd door wiskundige objecten, zoals een passer, een dobbelsteen en een meetlat. Het werk heeft verschillende interpretaties, maar wordt vaak geassocieerd met het concept van creatieve en intellectuele melancholie.'],
+    [makePaintingMaterial('./resources/SiteFoto.png'), 500/246,
+    "Deze site zelf", 'Een voorbeeld van hoe dat wiskunde en kunst samen kunnen komen is deze site. Een digitaal museum. Het kunstaspect is duidelijk zichtbaar aan de schilderijen die hier hangen  en de wiskunde licht overal onder de werking van de site. Om dit beeld dat je nu ziet te creëren is er een gigantische hoeveelheid wiskunde nodig. Ook om toe te laten dat je kan bewegen en rondkijken is er wiskunde nodig. Dit is gemengd met de nood om "mooi" te programmeren. Er zijn mensen die zelfs denken dat programmeren een soort kunst op zich is. Daardoor zou deze site zelf ook geïnterpreteerd kunnen worden als een kunstwerk.'],
+    [makePaintingMaterial('./resources/Leyers.jpg'), 732/1261,
+    "Leyers", 'Een kunstwerk dat we nodig hebben maar niet hebben verdiend. Het is bewezen dat Leyers een mathematisch perfect persoon is in elk aspect. Meetkundig heeft hij de perfecte figuur en mentaal heeft hij een brein dat veel verder ontwikkeld is dan dat van de gemiddelde WEWI-leerling. Elke foto van hem wordt automatisch als kunst beschouwd.'],
 
-
+    //[0xffffff, 1/1, "Engelenbeeld door Vicente Betoret Ferrero", "Een low poly 3D model dat een engel voorstelt. Dit soort modellen wordt met software zoals blender gemaakt."]
 ]   
 
 function makeSchool(scene, world) {
@@ -284,7 +284,11 @@ function makeSchool(scene, world) {
     [0xf8f8f8, -18.75, 2, -16.5, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
     [0xf8f8f8, -11.125, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
     [0xf8f8f8, -3.75, 2, -5.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
+    
     ]
+
+
+
     let paintingObjects =    
 
 
@@ -306,7 +310,8 @@ function makeSchool(scene, world) {
     [0xe2cfb7, 8.375, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
     [0xe2cfb7, 8.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
     [0xe2cfb7, 14.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-    [0xe2cfb7, -18.599998474121094, 2, -16.624998092651367, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    [0xe2cfb7, -18.599998474121094, 2, -16.624998092651367, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true], 
+    
     ]
 
     let lights = [[0xf8f8f8, 0.12499809265136719, 3.625, -16.625, 3, 0.25, 3, 0, 0, 0, false, true],
@@ -343,12 +348,15 @@ function makeSchool(scene, world) {
         
     }
     //fillStaticBlockList(scene, world, lights, true)
+    museum.push([0xf8f8f8, -0.3, 2, -16.25, 2, 4, 1, 0, 0, 0, true, false])
     fillStaticBlockList(scene, world, museum, true)
     
     mergeListedGeometries(scene, geometryLists)
 
     
-
+    //let newThing  = makeStaticBlock(scene, world, [0xf8f8f8, -0.3, 2, -16.25, 0.1, 0.1, 0.1, 0, 0, 0, false, true],  false)[0]
+    //console.log(newThing)
+    //paintings.push(0x111111, 1, "Engelenbeeld door Vicente Betoret Ferrero", "Dit is een low poly 3D model van een engelenbeeld. Dit soort modellen wordt vaak door software zoals Blender gemaakt.", newThing)
     const loader = new GLTFLoader()
     //let modelTexture = textureLoader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf')
     loader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf', function ( gltf ) {
