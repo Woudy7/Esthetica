@@ -50,7 +50,7 @@ scene.background = new THREE.Color(0xA0E2FF)
     scene.add(light);
 }
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.7)
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.65)
 scene.add(ambientLight)
 
 const boxWidth = 1;
@@ -110,7 +110,7 @@ canvas.addEventListener("click", async () => {
 
 })
 } else {
-    alert("Damn you don't have pointerlock, this might not work unless you got chrome or firefox bitch")
+    alert("Deze browser supporteert de pointerlock API niet, het kan dat de site dan niet volledig werkt.")
 }
 
 
@@ -342,7 +342,7 @@ function makeSchool(scene, world) {
         const light = new THREE.SpotLight(lampColor, 0.3)
         light.penumbra = 1
         light.angle = Math.PI/2
-        light.position.set(lamp[1], lamp[2], lamp[3])
+        light.position.set(lamp[1], lamp[2]-lamp[5]/2, lamp[3])
         light.target.position.set(lamp[1], lamp[2]-lamp[5]-10, lamp[3])
         scene.add(light)
         scene.add(light.target)
