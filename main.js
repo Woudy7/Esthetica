@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es'
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { PointerLockControls } from './controls.js';
 
 function main() {
@@ -26,6 +27,7 @@ const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
 const scene = new THREE.Scene();
 
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 
 
@@ -215,12 +217,48 @@ function makePaintingMaterial(picture) {
 }
 
 let paintings = [
-    [makePaintingMaterial('./resources/PicExample.jpg'), 1, "Schilderij van DALL-E 2", ""],
-    [makePaintingMaterial('./resources/cubism.png'), 1, "Schilderij van DALL-E 2", "Dit is een kunstwerk dat werd gemaakt door een AI, genaamd Dall e2. Dit kunstwerk is een kubistisch werk gemaakt door een AI. Ook is de gulden snede hier zeer aanwezig in dit portret.  Hiermee wordt er harmonie gecreëerd. Ook wordt het menselijke, de mens, hier afgebeeld als een opeenstapeling van kubistische figuren."],
-    [makePaintingMaterial('./resources/impressionism.png'), 1, "Schilderij van DALL-E 2", "Een kunstwerk gegenereerd door een AI-model. Het impressionisme is duidelijk aanwezig in dit werk. Hiermee doet het de kijker ervan inleven in het moment. De nadruk ligt hier duidelijk op de kleur en het licht dat hiermee gemoeid is. Je ziet wel dat het bloemen zijn, maar ook niet meer dan dat."],
-    [makePaintingMaterial('./resources/2 soldaten schilderij.jpg'), 500/389, "De eed van de Horatii door Jacques-Louis David (1784)", "De schilderkunst is neoclassicisme en zit boordevol gulden sneden. Zo zijn de 2 horatii's (soldaten) links op zo'n manier opgesteld dat ze de gulden snede vormen met de rest van het schilderij. Ook hun benen t.o.v. hun romp, hun hand t.o.v. hun arm..."],
-    [makePaintingMaterial('./resources/schepping van Adam.jpg'), 260/121,"Schepping van Adam door Michelangelo", "Deze fresco is een illustratie van het scheppingsverhaal 'Genesis'. We zien God Adam creëren. De lengte van Adam en de lengte van God op de fresco voldoen aan de gulden ratio. Dit betekent dat de arm van Adam (links) dezelfde verhouding heeft t.o.v. van Gods arm als de arm van God t.o.v. het geheel. "]
-]
+    [makePaintingMaterial('./resources/cubism.png'), 1, "Schilderij van DALL-E 2", 
+        "Dit is een kunstwerk dat werd gemaakt door een AI, genaamd Dall e2. Dit kunstwerk is een kubistisch werk gemaakt door een AI. Ook is de gulden snede hier zeer aanwezig in dit portret.  Hiermee wordt er harmonie gecreëerd. Ook wordt het menselijke, de mens, hier afgebeeld als een opeenstapeling van kubistische figuren."],
+    [makePaintingMaterial('./resources/impressionism.png'), 1, "Schilderij van DALL-E 2", 
+        "Een kunstwerk gegenereerd door een AI-model. Het impressionisme is duidelijk aanwezig in dit werk. Hiermee doet het de kijker ervan inleven in het moment. De nadruk ligt hier duidelijk op de kleur en het licht dat hiermee gemoeid is. Je ziet wel dat het bloemen zijn, maar ook niet meer dan dat."],
+    [makePaintingMaterial('./resources/2 soldaten schilderij.jpg'), 500/389, "De eed van de Horatii door Jacques-Louis David (1784)", 
+        "De schilderkunst is neoclassicisme en zit boordevol gulden sneden. Zo zijn de 2 horatii's (soldaten) links op zo'n manier opgesteld dat ze de gulden snede vormen met de rest van het schilderij. Ook hun benen t.o.v. hun romp, hun hand t.o.v. hun arm..."],
+    [makePaintingMaterial('./resources/schepping van Adam.jpg'), 260/121,"Schepping van Adam door Michelangelo", 
+        "Deze fresco is een illustratie van het scheppingsverhaal 'Genesis'. We zien God Adam creëren. De lengte van Adam en de lengte van God op de fresco voldoen aan de gulden ratio. Dit betekent dat de arm van Adam (links) dezelfde verhouding heeft t.o.v. van Gods arm als de arm van God t.o.v. het geheel. "],
+    [makePaintingMaterial('./resources/VitruvianMan.jpg'), 452/614,
+        "The Vitruvian Man (De Vitruviaanse Man) door Leonardo da Vinci", 
+        "Deze beroemde tekening toont een naakte man in twee overlappende posities, met zijn ledematen en romp geplaatst binnen een cirkel en een vierkant. Het werk illustreert de principes van de gulden snede en de verhoudingen van het menselijk lichaam, wat belangrijke wiskundige concepten zijn."],
+    [makePaintingMaterial('./resources/ThePersistenceOfMemory.jpg'), 750/570,
+        "The Persistence of Memory  (De Volharding der Herinnering) door Salvador Dalí", "Dit surrealistische schilderij toont vervormde horloges die lijken te smelten en hangen over objecten. Hoewel het schilderij niet strikt geometrisch is, bevat het elementen van meetkunde, zoals de gestructureerde compositie en de nauwkeurige weergave van objecten."],
+    [makePaintingMaterial('./resources/Kanagawa.jpg'), 500/348,
+        "The Great Wave off Kanagawa (De Grote Golf van Kanagawa) door Katsushika Hokusai", "Dit iconische Japanse houtblokafdruk toont een gigantische golf die de kust overspoelt, met op de achtergrond de berg Fuji. Hoewel het schilderij niet direct wiskundige vormen bevat, maakt het gebruik van de principes van lineaire perspectief en diagonale lijnen om diepte en beweging te creëren. Deze wiskundige concepten spelen een belangrijke rol in de compositie en visuele impact van het werk."],
+    [makePaintingMaterial('./resources/Fractal.jpg'), 640/400,
+        "Fractal", "Dit is een voorbeeld van een fractal, een meetkundige figuur die zelfgelijkend is met een oneindige hoeveelheid details."],
+    [makePaintingMaterial('./resources/MandelBrot.jpg'), 512/384,
+        "Mandelbrotfractal", "Dit is een van de meest bekende fractalen, het is zelfgelijkend wat betekent dat het is opgebouwd uit delen die grotendeels gelijkvormig zijn met de figuur zelf. Als je de mathematische versie van deze figuur hebt dan kan je er oneindig lang op inzoomen met een verscheidenheid aan patronen dat verschijnt, vaak patronen die zich herhalen op verschillende niveaus van grootte."],
+    [makePaintingMaterial('./resources/Fox.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A fox on a hill staring over forests in the night. The sky if full of stars, digital art".<br><br>Zelfs met spellingsfouten kan de AI nog een afbeelding maken van de prompt.'],
+    [makePaintingMaterial('./resources/WorldExplode.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "The world exploding as the gods watch, digital art". Het lijkt alsof het een episch verhaal toont over een strijd waar wij niet van weten.'],
+    [makePaintingMaterial('./resources/GalaxyCat.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A galaxy cat sleeping by a fire, digital art".<br><br>Bij het gebruiken van generative AI zijn er bepaalde technieken die mensen gebruiken om betere resultaten te krijgen, zoals hier de toevoeging van "digital art" achter de prompt om een mooi resultaat te krijgen. Het toepassen van dit soort technieken wordt vaak "prompting" genoemd. Er zijn verschillende online communities waarbij men tips deelt om goed te kunnen "prompten".'],
+    [makePaintingMaterial('./resources/Gondalpo.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A gondalpho standing next to a contama, painting". <br><br>Bij niet bestaande woorden maakt de AI nog altijd een afbeelding, de AI kan namelijk voor alle mogelijke teksten en beschrijvingen een afbeelding maken. Het interpreteerd dan gewoon hoe dat het er moet uitzien.'],
+    [makePaintingMaterial('./resources/Yannita.jpg'), 1/1,
+        "Schilderij van DALL-E 2", 'Een schilderij gemaakt door DALL-E 2 met prompt "A painting of a landscape in the style of Josh Yannita". <br><br>Ook bij niet bestaande artiesten of stijlen moet de AI een interpretatie proberen maken van de beschrijving. Hierbij kunnen er verscheidende resultaten zijn zoals dit schilderij.'],
+    [makePaintingMaterial('./resources/'), 1/1,
+        "Nog niets", 'Zwart spul'],
+    [makePaintingMaterial('./resources/'), 1/1,
+    "Nog niets", 'Zwart spul'],
+    [makePaintingMaterial('./resources/'), 1/1,
+    "Nog niets", 'Zwart spul'],
+    [makePaintingMaterial('./resources/'), 1/1,
+    "Nog niets", 'Zwart spul'],
+    [makePaintingMaterial('./resources/'), 1/1,
+    "Nog niets", 'Zwart spul'],
+
+
+]   
 
 function makeSchool(scene, world) {
     // let teacher = new Teacher(scene, world, new THREE.Vector3(1,1,1), 0x000000, 0x333333, 0xffe4e1)
@@ -229,50 +267,47 @@ function makeSchool(scene, world) {
 
     ]
     let museum = 
-
-[[0xf8f8f8, -2.25, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0xaaffff, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
-[0xf8f8f8, 0.125, 3.375, 2.25, 2, 0.75, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, 0.12499809265136719, 3.875, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
-[0xf8f8f8, 2.5, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0xffc0ab, 0.125, 0.125, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
-[0xf8f8f8, 4, 2, -5.25, 0.25, 3.5, 15.25, 0, 0, 0, true, true],
-[0xf8f8f8, 11.625, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, 19, 2, -16.75, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
-[0xf8f8f8, 11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, 4, 2, -28.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
-[0xf8f8f8, 0, 2, -35.5, 7.75, 3.5, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, -3.750000476837158, 2, -27.875, 0.25, 3.5, 15, 0, 0, 0, true, true],
-[0xf8f8f8, -11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, -18.75, 2, -16.5, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
-[0xf8f8f8, -11.125, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
-[0xf8f8f8, -3.75, 2, -5.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
-]
+    [[0xf8f8f8, -2.25, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
+    [0x9ff3e9, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
+    [0xf8f8f8, 0.125, 3.375, 2.25, 2, 0.75, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, 0.12499809265136719, 3.875, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
+    [0xf8f8f8, 2.5, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xffc0ab, 0.125, 0.125, -16.625, 38, 0.25, 38, 0, 0, 0, true, true],
+    [0xf8f8f8, 4, 2, -5.25, 0.25, 3.5, 15.25, 0, 0, 0, true, true],
+    [0xf8f8f8, 11.625, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, 19, 2, -16.75, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
+    [0xf8f8f8, 11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, 4, 2, -28.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
+    [0xf8f8f8, 0, 2, -35.5, 7.75, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, -3.750000476837158, 2, -27.875, 0.25, 3.5, 15, 0, 0, 0, true, true],
+    [0xf8f8f8, -11.375, 2, -20.5, 15, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, -18.75, 2, -16.5, 0.25, 3.5, 7.75, 0, 0, 0, true, true],
+    [0xf8f8f8, -11.125, 2, -12.75, 15, 3.5, 0.25, 0, 0, 0, true, true],
+    [0xf8f8f8, -3.75, 2, -5.125, 0.25, 3.5, 15, 0, 0, 0, true, true],
+    ]
     let paintingObjects =    
-[[0xf8f8f8, 0.125, 2, -35.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
-[0xf8f8f8, 3.8500003814697266, 2, -2.375, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
-[0xf8f8f8, -3.599998950958252, 2, -8.375, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
-[0xf8f8f8, -3.599998950958252, 2, -2.375, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
-[0xf8f8f8, -8.125, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
-[0xf8f8f8, -14.249999046325684, 2, -12.775007247924805, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, -7.749999046325684, 2, -12.775004386901855, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, 14.499999046325684, 2, -12.77499771118164, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, 8, 2, -12.77500057220459, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, 3.8500003814697266, 2, -8.375, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
-[0xf8f8f8, -3.599998950958252, 2, -24.875, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
-[0xf8f8f8, -3.599998950958252, 2, -30.875, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
-[0xf8f8f8, 3.8500003814697266, 2, -24.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
-[0xf8f8f8, 3.8500003814697266, 2, -30.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
-[0xf8f8f8, 18.849998474121094, 2, -16.625, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
-[0xf8f8f8, 14.375, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
-[0xf8f8f8, 8.375, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
-[0xf8f8f8, 8.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, 14.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, -18.599998474121094, 2, -16.624998092651367, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
-[0xf8f8f8, -14.125, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, -8.125, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
-[0xf8f8f8, -14.125, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
-]
+
+
+    [[0xe2cfb7, 0.125, 2, -35.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    [0xe2cfb7, 3.8500003814697266, 2, -2.375, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+    [0xe2cfb7, -3.599998950958252, 2, -8.375, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    [0xe2cfb7, -3.599998950958252, 2, -2.375, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    [0xe2cfb7, -8.125, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    [0xe2cfb7, -8.125, 2, -12.89999771118164, 3.5, 2, 0.050000011920928955, 0, 180, 0, true, true],
+    [0xe2cfb7, -14.125, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    [0xe2cfb7, -14.125, 2, -12.89999771118164, 3.5, 2, 0.050000011920928955, 0, 180, 0, true, true],
+    [0xe2cfb7, 3.8500003814697266, 2, -8.375, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+    [0xe2cfb7, -3.599998950958252, 2, -24.875, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    [0xe2cfb7, -3.599998950958252, 2, -30.875, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    [0xe2cfb7, 3.8500003814697266, 2, -24.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+    [0xe2cfb7, 3.8500003814697266, 2, -30.875, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+    [0xe2cfb7, 18.849998474121094, 2, -16.625, 3.5, 2, 0.04999999701976776, 0, -90, 0, true, true],
+    [0xe2cfb7, 14.375, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    [0xe2cfb7, 8.375, 2, -20.349998474121094, 3.5, 2, 0.04999999701976776, 0, 0, 0, true, true],
+    [0xe2cfb7, 8.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
+    [0xe2cfb7, 14.375, 2, -12.899999618530273, 3.5, 2, 0.04999999701976776, 0, 180, 0, true, true],
+    [0xe2cfb7, -18.599998474121094, 2, -16.624998092651367, 3.5, 2, 0.04999999701976776, 0, 90, 0, true, true],
+    ]
 
     let lights = [[0xf8f8f8, 0.12499809265136719, 3.625, -16.625, 3, 0.25, 3, 0, 0, 0, false, true],
     [0xf8f8f8, 0.12499809265136719, 3.625, -27.875, 1.5, 0.25, 3, 0, 0, 0, false, true],
@@ -285,8 +320,10 @@ function makeSchool(scene, world) {
         const painting = paintings[i]
         let paintingObj = paintingObjects[i]
         paintingObj[0] = painting[0]
+        //paintingObj[6] = 3
         paintingObj[4] = paintingObj[5] * painting[1] //Setting aspect ratio, width = height * width/height
         painting[4] = makeStaticBlock(scene, world, paintingObj, false)[0]
+        console.log(painting[4])
     }
     let lampColor = 0xFFFFFF
     let lampMaterial = new THREE.MeshBasicMaterial(lampColor)
@@ -307,8 +344,26 @@ function makeSchool(scene, world) {
     }
     //fillStaticBlockList(scene, world, lights, true)
     fillStaticBlockList(scene, world, museum, true)
-
+    
     mergeListedGeometries(scene, geometryLists)
+
+    
+
+    const loader = new GLTFLoader()
+    //let modelTexture = textureLoader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf')
+    loader.load('./resources/angel_yard_sculpture_low_poly/scene.gltf', function ( gltf ) {
+        const model = gltf.scene
+        gltf.scene.scale.set(0.8, 0.8, 0.8)
+        gltf.scene.position.set(0, 0, -16.25)
+        scene.add( gltf.scene );
+
+        //applyTextureToModel(model, modelTexture)
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } );
+    
     
 }
 

@@ -9,6 +9,7 @@ html, body {
  }
 
  #infocontain {
+   font-family: Verdana;
     position: fixed;
     top: 5vw;
     left: 5vw;
