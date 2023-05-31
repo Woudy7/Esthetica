@@ -93,7 +93,7 @@ floor.quaternion.copy(groundBody.quaternion)
 
 
 
-makeSchool(scene, world)
+makeMuseum(scene, world)
 
 
 
@@ -186,7 +186,8 @@ let white = new THREE.MeshPhongMaterial(color1)
 
 // geometryLists[color1] = []
 
-class Teacher {
+// Not used class
+class Person {
     constructor(scene, world, position, shirtColor, pantsColor, skinColor, hairColor, hairPositions) {
         const body = new THREE.Object3D()
         body.position.set(position.x, position.y, position.z)
@@ -262,12 +263,7 @@ let paintings = [
       //[0xffffff, 1/1, "Engelenbeeld door Vicente Betoret Ferrero", "Een low poly 3D model dat een engel voorstelt. Dit soort modellen wordt met software zoals blender gemaakt."]
 ]   
 
-function makeSchool(scene, world) {
-    // let teacher = new Teacher(scene, world, new THREE.Vector3(1,1,1), 0x000000, 0x333333, 0xffe4e1)
-    
-    let gebouwA = [
-
-    ]
+function makeMuseum(scene, world) {
     let museum = 
     [[0xf8f8f8, -2.25, 2, 2.25, 2.75, 3.5, 0.25, 0, 0, 0, true, true],
     [0x9ff3e9, 0.125, 1.625, 2.25, 2, 2.75, 0.15000000596046448, 0, 0, 0, true, true],
