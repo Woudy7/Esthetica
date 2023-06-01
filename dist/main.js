@@ -223,7 +223,7 @@ let paintings = [
     [makePaintingMaterial('./resources/impressionism.png'), 1, "Schilderij van DALL-E 2", 
         "Een kunstwerk gegenereerd door een AI-model. Het impressionisme is duidelijk aanwezig in dit werk. Hiermee doet het de kijker ervan inleven in het moment. De nadruk ligt hier duidelijk op de kleur en het licht dat hiermee gemoeid is. Je ziet wel dat het bloemen zijn, maar ook niet meer dan dat."],
     [makePaintingMaterial('./resources/2 soldaten schilderij.jpg'), 500/389, "De eed van de Horatii door Jacques-Louis David (1784)", 
-        "De schilderkunst is neoclassicisme en zit boordevol gulden sneden. Zo zijn de 2 horatii's (soldaten) links op zo'n manier opgesteld dat ze de gulden snede vormen met de rest van het schilderij. Ook hun benen t.o.v. hun romp, hun hand t.o.v. hun arm..."],
+        "De schilderkunst is neoclassicisme en zit boordevol gulden sneden. Zo zijn de 3 horatii's (soldaten) links op zo'n manier opgesteld dat ze de gulden snede vormen met de rest van het schilderij. Ook hun benen t.o.v. hun romp, hun hand t.o.v. hun arm..."],
     [makePaintingMaterial('./resources/schepping van Adam.jpg'), 260/121,"Schepping van Adam door Michelangelo", 
         "Deze fresco is een illustratie van het scheppingsverhaal 'Genesis'. We zien God Adam creëren. De lengte van Adam en de lengte van God op de fresco voldoen aan de gulden ratio. Dit betekent dat de arm van Adam (links) dezelfde verhouding heeft t.o.v. van Gods arm als de arm van God t.o.v. het geheel. "],
         [makePaintingMaterial('./resources/GalaxyCat.jpg'), 1/1,
